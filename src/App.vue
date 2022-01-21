@@ -6,12 +6,18 @@
     />
 
     <AddNewCard 
-    v-else-if="currentView == 'addnewcard'"/>
-
+    v-else-if="currentView == 'addnewcard'"
+    @ChangePage="ChangePage"
+    @AddtoList="AddtoList"
+    />
+    <!-- lyssnare som byter värde på currentView -->
 
     <nav>
-      <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a>
-      <a v-else-if="currentView == 'home'" @click="currentView = 'addnewcard'">ADD A NEW CARD</a>
+      <!-- <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a> -->
+      <button v-if="currentView == 'home'"
+      @click="currentView = 'addnewcard'">
+      ADD A NEW CARD
+      </button>
     </nav>
   </div>
 </template>
@@ -22,17 +28,25 @@
 
 export default {
   components: {Home, AddNewCard,},
+  methods: {
+    ChangePage(Page){
+      this.currentView = Page
+    },
+    AddtoList(Card){
+      this.cardlistdata.push(Card)
+    }
+  },
   data(){return{
     currentView: "home",
     cardlistdata: [
-      { 
-        cardNumber:"1234 5678 1910 1112",
-        cardholder:"Fredrik Fredriksson",
-        expireMonth:"11",
-        expireYear:"22",
-        CCV:"312",
-        vendor: "bit",
-      }
+      // { 
+      //   cardNumber:"1234 5678 1910 1112",
+      //   cardholder:"Fredrik Fredriksson",
+      //   expireMonth:"11",
+      //   expireYear:"22",
+      //   CCV:"312",
+      //   vendor: "bit",
+      // }
     ],
   }},
 

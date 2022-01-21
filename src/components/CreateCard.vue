@@ -1,13 +1,20 @@
 <template>
   <div>
-      <p>{{this.Cardnumber}}</p>
-      <p>{{this.Cardholder}}</p>
-      <p>{{this.Valid}}</p>
-      <p>{{this.CVC}}</p>
-      <p>{{this.Vendor}}</p>
+      <section>
+        <p>{{this.Card.Cardnumber}}</p>
+        <p>{{this.Card.Cardholder}}</p>
+        <p>{{this.Card.Month}}</p>
+        <p>{{this.Card.Year}}</p>
+        <p>{{this.Card.CVC}}</p>
+        <p>{{this.Card.Vendor}}</p>
+      </section>
+
       <CardForm
       @send="RITA"
+      @ChangePage="$emit('ChangePage')"
+      @AddtoList="AddtoList"
       />
+      <!-- @submitted="$emit('submitted', this.Card)" -->
   </div>
 </template>
 
@@ -17,24 +24,34 @@ import CardForm from './CardForm.vue'
 export default {
     components: {CardForm},
     data(){return{
-        Cardholder: "",
-        Cardnumber: "",
-        Valid: "",
-        CVC: "",
-        Vendor: "",
+        Card: {
+            Cardnumber: "",
+            Cardholder: "",
+            Month: "",
+            Year: "",
+            CVC: "",
+            Vendor: "",
+        },
     }},
     methods: {
+        AddtoList(payload){
+            this.$emit('AddtoList', payload)
+        },
         RITA(janne){
-        this.Cardnumber = janne.Cardnumber       
-        this.Cardholder = janne.Cardholder       
-        this.CVC = janne.CVC       
-        this.Vendor = janne.Vendor      
-        this.Valid = janne.Valid      
+        this.Card.Cardnumber = janne.Cardnumber       
+        this.Card.Cardholder = janne.Cardholder       
+        this.Card.CVC = janne.CVC       
+        this.Card.Vendor = janne.Vendor      
+        this.Card.Month = janne.Month    
+        this.Card.Year = janne.Year      
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
+/* section {
+    border:solid springgreen 1px;
+} */
 
 </style>
