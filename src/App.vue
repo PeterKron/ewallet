@@ -1,28 +1,51 @@
 <template>
   <div id="app">
+    <Home 
+    v-if="currentView == 'home'"
+    :CardListData="cardlistdata"
+    />
+
+    <AddNewCard 
+    v-else-if="currentView == 'addnewcard'"/>
+
+
     <nav>
-      <a @click="currentView = 'home'">Home</a>
-      <a @click="currentView = 'addnewcard'">About</a>
+      <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a>
+      <a v-else-if="currentView == 'home'" @click="currentView = 'addnewcard'">ADD A NEW CARD</a>
     </nav>
-    <Home v-if="currentView == 'home'"/>
-    <AddNewCard v-else-if="currentView == 'addnewcard'"/>
+    <!-- <CardItem /> -->
   </div>
 </template>
 
 <script>
   import Home from './views/Home.vue'
   import AddNewCard from './views/AddNewCard.vue'
-
+  // import CardItem from './components/CardItem.vue'
 
 export default {
-  components: {Home, About, AddNewCard},
+  components: {Home, AddNewCard,},
   data(){return{
-    currentView: "home"
+    currentView: "home",
+    cardlistdata: [
+      { 
+        cardNumber:"1234 5678 1910 1112",
+        cardholder:"Fredrik Fredriksson",
+        expireMonth:"11",
+        expireYear:"22",
+        CCV:"312",
+        vendor: "bit",
+      }
+    ],
   }},
 
   name: 'App',
 }
+
+
 </script>
+
+
+
 
 <style lang="scss">
 #app {
@@ -32,5 +55,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+a {
+  font-size: 1rem;
+  border: 5px solid;
+  border-radius: 5%;
+}
+nav {
+  margin: 5rem;
 }
 </style>
