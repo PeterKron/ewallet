@@ -12,14 +12,20 @@
       </span>
       <span class="majsan">
       <p>fredrik fredriksson</p>
-      <p>11/29</p>
+      <p>{{nyckel}}</p>
+      
       </span>
+  <AddNewCard />
   </div>
+  
 </template>
 
 <script>
-export default {
+import AddNewCard from '../views/AddNewCard.vue'
 
+export default {
+  props: ['nyckel'],
+  components: {AddNewCard}
 }
 </script>
 
