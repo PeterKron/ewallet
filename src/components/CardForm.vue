@@ -1,8 +1,10 @@
 <template>
-    <div>
-        <form @submit.prevent="submit">
+<!-- form @submit.prevent="() => $emit('ChangePage'), (Card) => $emit('AddtoList', Card)" -->
+ <div> 
+        <form @submit.prevent="Submit">
             <label for="">CARD NUMBER</label>
-            <input type="number" v-model.number="Card.Cardnumber" @keyup="RenderCard">
+            <input type="text" v-model="Card.Cardnumber" 
+            @keyup="RenderCard">
             
             <label for="">CARDHOLDER NAME</label>
             <input type="text" v-model="Card.Cardholder" @keyup="RenderCard">
@@ -30,7 +32,6 @@
                     {{vendor.text}}
                 </option>
             </select>
-
             <button>ADD CARD</button>
         </form>
     </div>
@@ -54,14 +55,17 @@ export default {
         ],
     }},
     methods: {
-        submit(){
+        Submit(){
             this.$emit('ChangePage')
             this.$emit('AddtoList', this.Card)
             // this.$emit('AddtoList', {...this.Card})
         },
         // add ifs and donts
         RenderCard(){
-            this.$emit('send', this.Card)
+            if(this.Card.Cardnumber.length >= 4){
+                console.log(2)
+            }
+            this.$emit('RenderCard', this.Card)        
         }
     }
 }

@@ -1,24 +1,24 @@
 <template>
-  <div>
-      <section>
+  <main>
+      <h1>ADD A NEW CARD</h1>
+      <section :class="CardColor">
+        <img src="../assets/wifi.svg" alt="">
+        <img src="../assets/chip.svg" alt="">
         <img :src="currentUrl" alt="">
-        <!-- <img src="../assets/ninja.svg" alt=""> -->
-        <p>{{Card.Cardnumber}}</p>
+        <h2>{{Card.Cardnumber}}</h2>
+        <p class="smallerp">CARDHOLDER NAME</p>
         <p>{{Card.Cardholder}}</p>
+        <p class="smallerp">VALID THRU</p>
         <p>{{Card.Month}}</p>
         <p>{{Card.Year}}</p>
-        <p>{{Card.CVC}}</p>
-        <!-- <p>{{Card.Vendor}}</p> -->
-        
       </section>
-
       <CardForm
-      @send="RITA"
+      @RenderCard="RenderCard"
       @ChangePage="$emit('ChangePage')"
-      @AddtoList="AddtoList"
+      @AddtoList="(payload) => $emit('AddtoList', payload)"
       />
-      <!-- @submitted="$emit('submitted', this.Card)" -->
-  </div>
+      <!-- @AddtoList="AddtoList" -->
+  </main>
 </template>
 
 <script>
@@ -28,11 +28,11 @@ import bitcoin from '../assets/bitcoin.svg'
 import blockchain from '../assets/blockchain.svg'
 import evil from '../assets/evil.svg'
 
+
 export default {
     components: {CardForm},
     data(){return{
-        currentUrl: ninja,
-        // randomurl: bitcoin,blockchain,evil,
+        currentUrl: null,
         Card: {
             Cardnumber: "",
             Cardholder: "",
@@ -41,37 +41,77 @@ export default {
             CVC: "",
             Vendor: "",
         },
+        CardColor: "",
     }},
     methods: {
-        AddtoList(payload){
-            this.$emit('AddtoList', payload)
-        },
-        RITA(janne){
-        this.Card.Cardnumber = janne.Cardnumber       
-        this.Card.Cardholder = janne.Cardholder       
-        this.Card.CVC = janne.CVC       
-        this.Card.Month = janne.Month    
-        this.Card.Year = janne.Year
-        if (janne.Vendor == "Blockchain"){
-           this.currentUrl = blockchain 
+        RenderCard(Card){
+        this.Card.Cardnumber = Card.Cardnumber       
+        this.Card.Cardholder = Card.Cardholder.toUpperCase(Card.Cardholder)        
+        this.Card.CVC = Card.CVC       
+        this.Card.Month = Card.Month    
+        this.Card.Year = Card.Year
+        if (Card.Vendor == "Blockchain"){
+           this.currentUrl = blockchain
+           this.CardColor = "blockchain" 
            }
-        if (janne.Vendor == "Ninja"){
+        if (Card.Vendor == "Ninja"){
            this.currentUrl = ninja
+           this.CardColor = "ninja"
            }
-        if (janne.Vendor == "Evil"){
+        if (Card.Vendor == "Evil"){
            this.currentUrl = evil 
+           this.CardColor = "evil"
            }
-        if (janne.Vendor == "Bitcoin"){
-           this.currentUrl = bitcoin 
+        if (Card.Vendor == "Bitcoin"){
+           this.currentUrl = bitcoin
+           this.CardColor = "bitcoin" 
            }
-        }
+        },
     }
 }
 </script>
 
-<style scoped>
-/* section {
-    border:solid springgreen 1px;
-} */
+<style lang="scss" scoped>
 
+section {
+    width: 382px;
+    height: 240px;
+    // padding: 16px 16px 16px 16px;
+    border-radius: 8px;
+    background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
+    #D0D0D0;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08); 
+}
+.smallerp {
+    font-size: 12px;
+}
+.evil{
+    background: linear-gradient(248.3deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 100%),
+    #F33355;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    p, h2 {
+    color: white;
+    }
+}
+.bitcoin{
+    background: linear-gradient(248.04deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 99.07%),
+    #FFAE34;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+}
+.ninja {
+    background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%),
+     #222222;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    p, h2 {
+    color: white;
+    }
+}
+.blockchain {
+    background: linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, rgba(0, 0, 0, 0) 100%),
+    #8B58F9;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+    p, h2 {
+    color: white;
+    }
+}
 </style>

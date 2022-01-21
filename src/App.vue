@@ -10,8 +10,6 @@
     @ChangePage="ChangePage"
     @AddtoList="AddtoList"
     />
-    <!-- lyssnare som byter värde på currentView -->
-
     <nav>
       <!-- <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a> -->
       <button v-if="currentView == 'home'"
@@ -38,42 +36,24 @@ export default {
   },
   data(){return{
     currentView: "home",
-    cardlistdata: [
-      // { 
-      //   cardNumber:"1234 5678 1910 1112",
-      //   cardholder:"Fredrik Fredriksson",
-      //   expireMonth:"11",
-      //   expireYear:"22",
-      //   CCV:"312",
-      //   vendor: "bit",
-      // }
-    ],
+    cardlistdata: [],
   }},
-
   name: 'App',
 }
-
-
 </script>
 
 
-
-
 <style lang="scss">
+* {
+  margin-top: 0;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // text-align: center;
+  // color: #2c3e50;
+  // margin-top: 0;
 }
-a {
-  font-size: 1rem;
-  border: 5px solid;
-  border-radius: 5%;
-}
-nav {
-  margin: 5rem;
-}
+
 </style>
