@@ -1,12 +1,15 @@
 <template>
   <div>
       <section>
-        <p>{{this.Card.Cardnumber}}</p>
-        <p>{{this.Card.Cardholder}}</p>
-        <p>{{this.Card.Month}}</p>
-        <p>{{this.Card.Year}}</p>
-        <p>{{this.Card.CVC}}</p>
-        <p>{{this.Card.Vendor}}</p>
+        <img :src="currentUrl" alt="">
+        <!-- <img src="../assets/ninja.svg" alt=""> -->
+        <p>{{Card.Cardnumber}}</p>
+        <p>{{Card.Cardholder}}</p>
+        <p>{{Card.Month}}</p>
+        <p>{{Card.Year}}</p>
+        <p>{{Card.CVC}}</p>
+        <!-- <p>{{Card.Vendor}}</p> -->
+        
       </section>
 
       <CardForm
@@ -20,10 +23,16 @@
 
 <script>
 import CardForm from './CardForm.vue'
+import ninja from '../assets/ninja.svg'
+import bitcoin from '../assets/bitcoin.svg'
+import blockchain from '../assets/blockchain.svg'
+import evil from '../assets/evil.svg'
 
 export default {
     components: {CardForm},
     data(){return{
+        currentUrl: ninja,
+        // randomurl: bitcoin,blockchain,evil,
         Card: {
             Cardnumber: "",
             Cardholder: "",
@@ -41,9 +50,20 @@ export default {
         this.Card.Cardnumber = janne.Cardnumber       
         this.Card.Cardholder = janne.Cardholder       
         this.Card.CVC = janne.CVC       
-        this.Card.Vendor = janne.Vendor      
         this.Card.Month = janne.Month    
-        this.Card.Year = janne.Year      
+        this.Card.Year = janne.Year
+        if (janne.Vendor == "Blockchain"){
+           this.currentUrl = blockchain 
+           }
+        if (janne.Vendor == "Ninja"){
+           this.currentUrl = ninja
+           }
+        if (janne.Vendor == "Evil"){
+           this.currentUrl = evil 
+           }
+        if (janne.Vendor == "Bitcoin"){
+           this.currentUrl = bitcoin 
+           }
         }
     }
 }

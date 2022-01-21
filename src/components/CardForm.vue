@@ -9,15 +9,15 @@
             
             <label for="">MONTH</label>
             <select v-model="Card.Month" @mouseup="RenderCard">
-                <option v-for="month in Months" :key="month.text">
-                    {{month.text}}
+                <option v-for="month in 12" :key="month">
+                    {{(month > 9) ? month : '0' + month}}
                 </option>
             </select>
 
             <label for="">YEAR</label>
             <select v-model="Card.Year" @mouseup="RenderCard">
-                <option v-for="year in Years" :key="year.text">
-                    {{year.text}}
+                <option v-for="year in 5" :key="year">
+                    {{year + 21}}
                 </option>
             </select>
             
@@ -26,10 +26,9 @@
             
             <label for="">VENDOR</label>
             <select v-model="Card.Vendor" @mouseup="RenderCard">
-                <option>Bitcoin</option>
-                <option>Ninja</option>
-                <option>Blockchain</option>
-                <option>Evil</option>
+                <option v-for="vendor in Vendors" :key="vendor.text">
+                    {{vendor.text}}
+                </option>
             </select>
 
             <button>ADD CARD</button>
@@ -46,22 +45,19 @@ export default {
             Month: "",
             Year: "",
             CVC: "",
-            Vendor: "",
+            Vendor: null,
         },
-        Months: [
-            {text: "01"},{text: "02"},{text: "03"},{text: "04"},
-            {text: "05"},{text: "06"},{text: "07"},{text: "08"},
-            {text: "09"},{text: "10"},{text: "11"},{text: "12"},
+        Vendors: [{text: "Bitcoin",},
+        {text: "Ninja", },
+        {text: "Blockchain",},
+        {text: "Evil", },
         ],
-        Years: [
-            {text: "22"},{text: "23"},{text: "24"},{text: "25"},{text: "26"},
-        ]
     }},
     methods: {
         submit(){
             this.$emit('ChangePage')
             this.$emit('AddtoList', this.Card)
-            // this.$emit('submitted', {...this.Card})
+            // this.$emit('AddtoList', {...this.Card})
         },
         // add ifs and donts
         RenderCard(){
