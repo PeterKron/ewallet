@@ -13,14 +13,12 @@
       <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a>
       <a v-else-if="currentView == 'home'" @click="currentView = 'addnewcard'">ADD A NEW CARD</a>
     </nav>
-    <!-- <CardItem /> -->
   </div>
 </template>
 
 <script>
   import Home from './views/Home.vue'
   import AddNewCard from './views/AddNewCard.vue'
-  // import CardItem from './components/CardItem.vue'
 
 export default {
   components: {Home, AddNewCard,},
