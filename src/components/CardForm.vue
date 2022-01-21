@@ -3,11 +3,11 @@
  <div> 
         <form @submit.prevent="Submit">
             <label for="">CARD NUMBER</label>
-            <input type="text" v-model="Card.Cardnumber" 
+            <input type="text" maxlength="19" v-model="Card.Cardnumber" @keypress="AddSpacing" 
             @keyup="RenderCard">
             
             <label for="">CARDHOLDER NAME</label>
-            <input type="text" v-model="Card.Cardholder" @keyup="RenderCard">
+            <input type="text" v-model="Card.Cardholder" onkeypress="return /[a-ö, ' ']/i.test(event.key)" @keyup="RenderCard">
             
             <label for="">MONTH</label>
             <select v-model="Card.Month" @mouseup="RenderCard">
@@ -24,7 +24,7 @@
             </select>
             
             <label for="">CVC</label>
-            <input type="number" v-model="Card.CVC" @keyup="RenderCard">
+            <input type="number" maxlength="3" v-model="Card.CVC" @keyup="RenderCard">
             
             <label for="">VENDOR</label>
             <select v-model="Card.Vendor" @mouseup="RenderCard">
@@ -53,6 +53,7 @@ export default {
         {text: "Blockchain",},
         {text: "Evil", },
         ],
+        keyCounter: 0
     }},
     methods: {
         Submit(){
@@ -62,10 +63,17 @@ export default {
         },
         // add ifs and donts
         RenderCard(){
-            if(this.Card.Cardnumber.length >= 4){
-                console.log(2)
+            if(this.Card.Cardnumber.length > 4){
+                this.Card.Cardnumber + " "
             }
             this.$emit('RenderCard', this.Card)        
+        },
+        AddSpacing (){
+        this.keyCounter++
+            if(this.keyCounter == 5){
+            this.Card.Cardnumber += " ";
+            this.keyCounter = 1;
+            }
         }
     }
 }
@@ -73,4 +81,53 @@ export default {
 <style>
 /* this.$emit('send', {...this.user}) */
 
+/* .cardForm{
+    margin: auto;
+    width: 400px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    margin-left: 10px;
+    margin-top: 3rem;
+}
+label{
+    align-self: flex-start;
+    font-size: 12px;
+    font-family: 'PT Mono', monospace;
+}
+input{
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px;
+    border-width: 1px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+button{
+    font-size: 22px;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    border-width: 2px;
+    background-color: white;
+    font-weight: bold;
+}
+button:hover{
+    background-color: black;
+    color: white;
+}
+.validUntil{
+    display: flex;
+    flex-direction: column;
+    input{
+        width: 150px;
+    }
+}
+.expireWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
 </style>

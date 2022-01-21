@@ -2,15 +2,20 @@
   <main>
       <h1>ADD A NEW CARD</h1>
       <section :class="CardColor">
+
         <img src="../assets/wifi.svg" alt="">
         <img src="../assets/chip.svg" alt="">
-        <img :src="currentUrl" alt="">
+        <img class="vendor-img" :src="currentUrl" alt="">
+
         <h2>{{Card.Cardnumber}}</h2>
-        <p class="smallerp">CARDHOLDER NAME</p>
-        <p>{{Card.Cardholder}}</p>
-        <p class="smallerp">VALID THRU</p>
-        <p>{{Card.Month}}</p>
-        <p>{{Card.Year}}</p>
+
+
+            <p class="smallerp">CARDHOLDER NAME</p>
+            <p>{{Card.Cardholder}}</p>
+
+            <p class="smallerp">VALID THRU</p>
+            <p>{{Card.Month}}</p><p>{{Card.Year}}</p>
+        
       </section>
       <CardForm
       @RenderCard="RenderCard"
@@ -34,7 +39,7 @@ export default {
     data(){return{
         currentUrl: null,
         Card: {
-            Cardnumber: "",
+            Cardnumber: "XXXX XXXX XXXX XXXX",
             Cardholder: "",
             Month: "",
             Year: "",
@@ -81,7 +86,10 @@ section {
     background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
     #D0D0D0;
     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08); 
+    display:grid;
 }
+
+
 .smallerp {
     font-size: 12px;
 }
