@@ -1,7 +1,7 @@
 <template>
   <main class="Home">
     <h1>WELCOME TO E-WALLET</h1>
-    <div class="hidden">
+    <div v-if="!(Card == '')">
       <p>HERE IS MY ACTIVE CARD btw in home</p>
       <section :class="CardColor" @click="flipcard">
           <div class="chipbox">
@@ -26,12 +26,17 @@
         
       </section>
     </div>
-        <p>HERE STARTS CARDLIST</p>
+        <!-- <p>HERE STARTS CARDLIST</p> -->
         <CardList
         :Card="Card"
         />
     <h1 class="test" v-if="Card == ''">THERE IS NO CARDS. <br> TO DO IT PRESS BUTTON BELOW</h1>
+    <div>
+    <img v-if="Card == ''" src="../assets/home-bitcoin.svg" alt="">
     <img v-if="Card == ''" src="../assets/home-ninja.svg" alt="">
+    <img v-if="Card == ''" src="../assets/home-evil.svg" alt="">
+    <img v-if="Card == ''" src="../assets/home-blockchain.svg" alt="">
+    </div>
   </main>
 </template>
 
@@ -40,30 +45,15 @@ import CardList from '../components/CardList.vue'
 export default {
   components: {CardList},
   props: ['Card'],
-  // data(){return{
-  //   hidden: false
-  // }},
   methods: {
     flipcard(){
       alert('notabletoflipcardjustyet')
     },
   },
-    // cardmetod (){
-    //   if(this.Card == ''){
-    //     this.hidden = true
-    //   }
-    // }
-  // beforeMount: function(){
-  //   this.cardmetod()
-  // }
 }
 </script>
 
-
 <style lang="scss" scoped>
-// .hidden {
-//   display: none;
-// }
 main {
     display: flex;
     flex-direction: column;
