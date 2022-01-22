@@ -56,6 +56,9 @@ p, label{
 font-family: PT MONO, monospace;
 margin: 0;
 }
+button {
+  font-family: PT MONO, monospace;
+}
 .number {
  font-size: 29px;
 }

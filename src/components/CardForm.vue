@@ -1,31 +1,42 @@
 <template>
 <!-- form @submit.prevent="() => $emit('ChangePage'), (Card) => $emit('AddtoList', Card)" -->
- <div> 
+ <main> 
         <form @submit.prevent="Submit">
+            
             <label for="">CARD NUMBER</label>
-            <input type="text" maxlength="19" v-model="Card.Cardnumber" autocomplete="cc-number"
+            <input type="text" maxlength="19" v-model="Card.Cardnumber"
             onkeypress="return /[1-9]/i.test(event.key)" @keyup="RenderCard" @keypress="AddSpace">
+            
             
             <label for="">CARDHOLDER NAME</label>
             <input type="text" v-model="Card.Cardholder" maxlength="28"
             onkeypress="return /[a-ö,' ']/i.test(event.key)" @keyup="RenderCard">
 
-            <label for="">MONTH</label>
-            <select v-model="Card.Month" @mouseup="RenderCard">
-                <option v-for="month in 12" :key="month">
-                    {{(month > 9) ? month : '0' + month}}
-                </option>
-            </select>
+            <section class="valid">
+                <aside>
+                    <label for="">MONTH</label>
+                    <select v-model="Card.Month" @mouseup="RenderCard">
+                        <option v-for="month in 12" :key="month">
+                            {{(month > 9) ? month : '0' + month}}
+                        </option>
+                    </select>
+                </aside>
 
-            <label for="">YEAR</label>
-            <select v-model="Card.Year" @mouseup="RenderCard">
-                <option v-for="year in 5" :key="year">
-                    {{year + 21}}
-                </option>
-            </select>
+                <aside>
+                    <label for="">YEAR</label>
+                    <select v-model="Card.Year" @mouseup="RenderCard">
+                        <option v-for="year in 5" :key="year">
+                            {{year + 21}}
+                        </option>
+                    </select>
+                </aside>
+
+                <aside>
+                    <label for="">CVC</label>
+                    <input type="text" maxlength="3" v-model="Card.CVC" onkeypress="return /[1-9]/i.test(event.key)" >
+                </aside>
+            </section>
             
-            <label for="">CVC</label>
-            <input type="text" maxlength="3" v-model="Card.CVC" onkeypress="return /[1-9]/i.test(event.key)" >
             
             <label for="">VENDOR</label>
             <select v-model="Card.Vendor" @mouseup="RenderCard">
@@ -35,7 +46,7 @@
             </select>
             <button>ADD CARD</button>
         </form>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -52,12 +63,12 @@ export default {
         Vendors: [{text: "Bitcoin",},{text: "Ninja", },{text: "Blockchain",},{text: "Evil", },],
     }},
     methods: {
+        // add ifs and donts
         Submit(){
             this.$emit('ChangePage')
             this.$emit('AddtoList', this.Card)
             // this.$emit('AddtoList', {...this.Card})
         },
-        // add ifs and donts
         RenderCard(){
             this.$emit('RenderCard', this.Card)        
         },
@@ -68,40 +79,43 @@ export default {
         }
     }
 }
-</script>
-<style>
 /* this.$emit('send', {...this.user}) */
+</script>
+<style lang="scss">
 
-/* .cardForm{
-    margin: auto;
-    width: 400px;
-}
 form{
     display: flex;
     flex-direction: column;
-    width: 380px;
-    margin-left: 10px;
-    margin-top: 3rem;
+    width: 382px;
+    margin-top: 40px;
 }
-label{
-    align-self: flex-start;
-    font-size: 12px;
-    font-family: 'PT Mono', monospace;
-}
-input{
+input, select {
+    padding: 20px;
     border-radius: 5px;
-    font-size: 18px;
-    padding: 10px;
     border-width: 1px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    font-size: 18px;
+    margin: 5px 0px 15px 0px;
 }
-button{
-    font-size: 22px;
-    padding: 1rem;
+aside {
+    display: flex;
+    flex-direction: column;
+    margin-right: 12px;
+    select {
+        width: 100px;
+    }
+    input:first-of-type {
+        width: 114px
+    }
+}
+.valid {
+    display: flex;
+}
+button {
+    padding: 20px;
     border-radius: 5px;
-    margin-top: 2rem;
-    border-width: 2px;
+    border-width: 1px;
+    font-size: 22px;
+    margin-top: 40px;
     background-color: white;
     font-weight: bold;
 }
@@ -109,16 +123,4 @@ button:hover{
     background-color: black;
     color: white;
 }
-.validUntil{
-    display: flex;
-    flex-direction: column;
-    input{
-        width: 150px;
-    }
-}
-.expireWrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-} */
 </style>

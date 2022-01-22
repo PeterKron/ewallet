@@ -1,6 +1,6 @@
 <template>
   <main>
-      <h1>ADD A NEW CARD</h1>
+      <h1>ADD A NEW BANK CARD</h1>
       <section :class="CardColor">
           <div class="chipbox">
             <img :src="wifi" alt="">
@@ -94,11 +94,12 @@ section {
     .number {
         grid-area: cardn;
         margin-top: 12px;
+        letter-spacing: 0.03em;
     }
     .validbox, .holderbox {
+        padding-top: 16px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
     }
     .holderbox {
         grid-area: cardh;
@@ -108,8 +109,11 @@ section {
         text-align: right;
         margin-right: 16px;
     }
-    .chipbox, .holderbox, .number {
+    .chipbox, .holderbox, .number{
         margin-left: 16px;
+    }
+    .smallerp {
+        margin-bottom: 5px;
     }
 }
 .Evil{
