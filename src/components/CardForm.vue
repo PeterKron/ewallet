@@ -63,12 +63,12 @@ export default {
         // add ifs and donts
         Submit(){
             
-            if(this.Card.Cardnumber.length < 19 && !this.Card.Cardholder.includes(" ")){
-                alert("error")
-            }
-            // if(!this.Card.Cardholder.includes(" ")){
+            // if(this.Card.Cardnumber.length < 19 ){
             //     alert("error")
             // }
+            if(!this.Card.Cardholder.includes(" ")){
+                alert("error")
+            }
             else {
                 this.$emit('ChangePage')
                 this.$emit('AddtoList', this.Card)

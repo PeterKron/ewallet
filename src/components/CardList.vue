@@ -1,12 +1,10 @@
 <template>
-  <main class="Home">
       <ul>
         <CardItem 
         v-for="Card in Card" :key="Card.Cardnumber"
         :Card="Card"
         />
       </ul>
-  </main>
 </template>
 
 <script>
@@ -19,5 +17,9 @@ export default {
 </script>
 
 <style>
+ul {
+    padding: 0;
+    margin: 0;
+}
 </style>
 
