@@ -1,19 +1,24 @@
 <template>
   <main class="Home">
-    <CardList 
-    :CardListData="CardListData"    
-    />
+    <h1>ALL MY SEXY CARDSSS</h1>
+      <ul>
+        <CardItem 
+        v-for="Card in CardListData" :key="Card.Cardnumber"
+        :Card="Card"
+        />
+      </ul>
   </main>
 </template>
 
 <script>
-import CardList from '../components/CardList.vue'
+
+import CardItem from '../components/CardItem.vue'
 export default {
-    components: {CardList},
-    props: ['CardListData']
+  components: {CardItem},
+  props: ['CardListData']
 }
 </script>
 
 <style>
-
 </style>
+

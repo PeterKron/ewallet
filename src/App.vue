@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <main>
     <Home 
     v-if="currentView == 'home'"
     :CardListData="cardlistdata"
@@ -18,7 +18,7 @@
       ADD A NEW CARD
       </button>
     </nav>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -49,6 +49,12 @@ export default {
 // * {
 //   margin: 0;
 // }
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 h1 {
   font-family: Source Sans Pro, sans-serif;
