@@ -1,7 +1,7 @@
 <template>
   <main class="Home">
     <h1>ALL MY SEXY CARDSSS</h1>
-      <p>HERE IS MY ACTIVE CARD</p>
+      <p>HERE IS MY ACTIVE CARD btw in home</p>
       <section :class="CardColor">
           <div class="chipbox">
             <img :src="wifi" alt="">
