@@ -55,7 +55,12 @@ main {
     justify-content: center;
     align-items: center;
 }
-
+.test {
+  width: 400px;
+  text-align: center;
+  color:rgb(245, 13, 13);
+  text-shadow: rgba(148, 140, 140, 0.432) 0.5px 0.8px;
+}
 h1 {
   font-family: Source Sans Pro, sans-serif;
 }

@@ -1,8 +1,9 @@
 <template>
   <main class="Home">
-    <h1>ALL MY SEXY CARDSSS</h1>
+    <h1>WELCOME TO E-WALLET</h1>
+    <div class="hidden">
       <p>HERE IS MY ACTIVE CARD btw in home</p>
-      <section :class="CardColor">
+      <section :class="CardColor" @click="flipcard">
           <div class="chipbox">
             <img :src="wifi" alt="">
             <img src="../assets/chip.svg" alt="">
@@ -24,30 +25,52 @@
         </div>
         
       </section>
+    </div>
         <p>HERE STARTS CARDLIST</p>
         <CardList
         :Card="Card"
         />
+    <h1 class="test" v-if="Card == ''">THERE IS NO CARDS. <br> TO DO IT PRESS BUTTON BELOW</h1>
+    <img v-if="Card == ''" src="../assets/home-ninja.svg" alt="">
   </main>
 </template>
 
 <script>
-
 import CardList from '../components/CardList.vue'
 export default {
   components: {CardList},
-  props: ['Card']
+  props: ['Card'],
+  // data(){return{
+  //   hidden: false
+  // }},
+  methods: {
+    flipcard(){
+      alert('notabletoflipcardjustyet')
+    },
+  },
+    // cardmetod (){
+    //   if(this.Card == ''){
+    //     this.hidden = true
+    //   }
+    // }
+  // beforeMount: function(){
+  //   this.cardmetod()
+  // }
 }
 </script>
 
 
 <style lang="scss" scoped>
+// .hidden {
+//   display: none;
+// }
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 section {
     width: 382px;
     height: 240px;

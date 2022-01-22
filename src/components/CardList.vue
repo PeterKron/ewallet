@@ -4,6 +4,7 @@
         v-for="Card in Card" :key="Card.Cardnumber"
         :Card="Card"
         />
+        <!-- <h1 v-if="Card == Array">you need to add cards, to do it press button below</h1> -->
       </ul>
 </template>
 
