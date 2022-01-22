@@ -3,12 +3,13 @@
  <div> 
         <form @submit.prevent="Submit">
             <label for="">CARD NUMBER</label>
-            <input type="text" maxlength="19" v-model="Card.Cardnumber" @keypress="AddSpacing" 
-            @keyup="RenderCard">
+            <input type="text" maxlength="19" v-model="Card.Cardnumber" autocomplete="cc-number"
+            onkeypress="return /[1-9]/i.test(event.key)" @keyup="RenderCard" @keypress="AddSpace">
             
             <label for="">CARDHOLDER NAME</label>
-            <input type="text" v-model="Card.Cardholder" onkeypress="return /[a-ö, ' ']/i.test(event.key)" @keyup="RenderCard">
-            
+            <input type="text" v-model="Card.Cardholder" maxlength="28"
+            onkeypress="return /[a-ö,' ']/i.test(event.key)" @keyup="RenderCard">
+
             <label for="">MONTH</label>
             <select v-model="Card.Month" @mouseup="RenderCard">
                 <option v-for="month in 12" :key="month">
@@ -24,7 +25,7 @@
             </select>
             
             <label for="">CVC</label>
-            <input type="number" maxlength="3" v-model="Card.CVC" @keyup="RenderCard">
+            <input type="text" maxlength="3" v-model="Card.CVC" onkeypress="return /[1-9]/i.test(event.key)" >
             
             <label for="">VENDOR</label>
             <select v-model="Card.Vendor" @mouseup="RenderCard">
@@ -46,14 +47,9 @@ export default {
             Month: "",
             Year: "",
             CVC: "",
-            Vendor: null,
+            Vendor: "",
         },
-        Vendors: [{text: "Bitcoin",},
-        {text: "Ninja", },
-        {text: "Blockchain",},
-        {text: "Evil", },
-        ],
-        keyCounter: 0
+        Vendors: [{text: "Bitcoin",},{text: "Ninja", },{text: "Blockchain",},{text: "Evil", },],
     }},
     methods: {
         Submit(){
@@ -63,16 +59,11 @@ export default {
         },
         // add ifs and donts
         RenderCard(){
-            if(this.Card.Cardnumber.length > 4){
-                this.Card.Cardnumber + " "
-            }
             this.$emit('RenderCard', this.Card)        
         },
-        AddSpacing (){
-        this.keyCounter++
-            if(this.keyCounter == 5){
-            this.Card.Cardnumber += " ";
-            this.keyCounter = 1;
+        AddSpace (){
+            if(this.Card.Cardnumber.length === 4 || this.Card.Cardnumber.length === 9 || this.Card.Cardnumber.length === 14){
+                this.Card.Cardnumber += " "
             }
         }
     }

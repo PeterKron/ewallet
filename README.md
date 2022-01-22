@@ -2,4 +2,5 @@
 
 ## e
 
-<!-- will this show if i posh -->
+<!-- extra features -->
+<!-- Delete Card, Edit Card, Turn Card -->

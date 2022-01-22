@@ -44,16 +44,23 @@ export default {
 
 
 <style lang="scss">
-* {
-  margin-top: 0;
+@import url('https://fonts.googleapis.com/css2?family=PT+Mono&family=Source+Sans+Pro:wght@400;700&display=swap');
+// * {
+//   margin: 0;
+// }
+
+h1 {
+  font-family: Source Sans Pro, sans-serif;
 }
-#app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // text-align: center;
-  // color: #2c3e50;
-  // margin-top: 0;
+p, label{
+font-family: PT MONO, monospace;
+margin: 0;
+}
+.number {
+ font-size: 29px;
+}
+.smallerp, label  {
+  font-size: 12px;
 }
 
 </style>
