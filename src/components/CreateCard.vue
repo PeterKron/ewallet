@@ -5,6 +5,7 @@
 
         <img src="../assets/wifi.svg" alt="">
         <img src="../assets/chip.svg" alt="">
+
         <img class="vendor-img" :src="currentUrl" alt="">
 
         <h2>{{Card.Cardnumber}}</h2>
@@ -28,50 +29,22 @@
 
 <script>
 import CardForm from './CardForm.vue'
-import ninja from '../assets/ninja.svg'
-import bitcoin from '../assets/bitcoin.svg'
-import blockchain from '../assets/blockchain.svg'
-import evil from '../assets/evil.svg'
 
 
 export default {
+
     components: {CardForm},
     data(){return{
-        currentUrl: null,
-        Card: {
-            Cardnumber: "XXXX XXXX XXXX XXXX",
-            Cardholder: "",
-            Month: "",
-            Year: "",
-            CVC: "",
-            Vendor: "",
-        },
+        currentUrl: require("../assets/bitcoin-grey.svg"),
+        Card: {},
         CardColor: "",
     }},
     methods: {
         RenderCard(Card){
-        this.Card.Cardnumber = Card.Cardnumber       
-        this.Card.Cardholder = Card.Cardholder.toUpperCase(Card.Cardholder)        
-        this.Card.CVC = Card.CVC       
-        this.Card.Month = Card.Month    
-        this.Card.Year = Card.Year
-        if (Card.Vendor == "Blockchain"){
-           this.currentUrl = blockchain
-           this.CardColor = "blockchain" 
-           }
-        if (Card.Vendor == "Ninja"){
-           this.currentUrl = ninja
-           this.CardColor = "ninja"
-           }
-        if (Card.Vendor == "Evil"){
-           this.currentUrl = evil 
-           this.CardColor = "evil"
-           }
-        if (Card.Vendor == "Bitcoin"){
-           this.currentUrl = bitcoin
-           this.CardColor = "bitcoin" 
-           }
-        },
+        this.Card = Card
+        this.currentUrl = require("../assets/"+ Card.Vendor +".svg")
+        this.CardColor = Card.Vendor
+        }
     }
 }
 </script>
@@ -79,9 +52,12 @@ export default {
 <style lang="scss" scoped>
 
 section {
-    width: 382px;
-    height: 240px;
-    // padding: 16px 16px 16px 16px;
+    width: 366px;
+    height: 224px;
+    // width: 382px;
+    // height: 240px;
+    padding: 16px 16px 16px 16px;
+    
     border-radius: 8px;
     background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
     #D0D0D0;
@@ -93,7 +69,7 @@ section {
 .smallerp {
     font-size: 12px;
 }
-.evil{
+.Evil{
     background: linear-gradient(248.3deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 100%),
     #F33355;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
@@ -101,12 +77,12 @@ section {
     color: white;
     }
 }
-.bitcoin{
+.Bitcoin{
     background: linear-gradient(248.04deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 99.07%),
     #FFAE34;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
 }
-.ninja {
+.Ninja {
     background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%),
      #222222;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
@@ -114,7 +90,7 @@ section {
     color: white;
     }
 }
-.blockchain {
+.Blockchain {
     background: linear-gradient(248.52deg, rgba(0, 0, 0, 0.15) 1.49%, rgba(0, 0, 0, 0) 100%),
     #8B58F9;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);

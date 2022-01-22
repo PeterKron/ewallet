@@ -11,7 +11,6 @@
     @AddtoList="AddtoList"
     />
     <nav>
-      <p>teat</p>
       <!-- <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a> -->
       <button v-if="currentView == 'home'"
       @click="currentView = 'addnewcard'">
