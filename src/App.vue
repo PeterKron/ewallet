@@ -2,7 +2,7 @@
   <main>
     <Home 
     v-if="currentView == 'home'"
-    :CardListData="cardlistdata"
+    :Card="cardlistdata"
     />
 
     <AddNewCard 
