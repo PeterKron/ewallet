@@ -9,6 +9,7 @@
     v-else-if="currentView == 'addnewcard'"
     @ChangePage="ChangePage"
     @AddtoList="AddtoList"
+    :CardListData="cardlistdata"
     />
     <nav>
       <!-- <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a> -->

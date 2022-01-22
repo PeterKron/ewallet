@@ -27,6 +27,7 @@
       @RenderCard="RenderCard"
       @ChangePage="$emit('ChangePage')"
       @AddtoList="(payload) => $emit('AddtoList', payload)"
+      :CardListData="CardListData"
       />
       <!-- @AddtoList="AddtoList" -->
   </main>
@@ -36,6 +37,7 @@
 import CardForm from './CardForm.vue'
 
 export default {
+    props: ['CardListData'],
     components: {CardForm},
     data(){return{
         currentUrl: "",
@@ -83,6 +85,9 @@ section {
     .chipbox {
         grid-area: wifi;
         margin-top: 16px;
+        img:first-of-type {
+            margin: 0px 0px -8px 2px;
+        }
     }
     .logo {
         display: flex;

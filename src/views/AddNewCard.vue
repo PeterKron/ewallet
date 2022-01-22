@@ -3,6 +3,7 @@
       <CreateCard
       @ChangePage="$emit('ChangePage', 'home')"
       @AddtoList="(payload) => $emit('AddtoList', payload)"
+      :CardListData="CardListData"
       />
       <!-- @submitted="this.$emit('fesds')" -->
   </main>
@@ -12,6 +13,7 @@
 import CreateCard from '../components/CreateCard.vue'
 
 export default {
+    props: ['CardListData'],
     components: {CreateCard},
 }
 </script>

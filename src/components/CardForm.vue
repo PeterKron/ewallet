@@ -51,6 +51,7 @@
 
 <script>
 export default {
+    props: ['CardListData'],
     data(){return{
         Card: {
             Cardnumber: "",
@@ -65,8 +66,12 @@ export default {
     methods: {
         // add ifs and donts
         Submit(){
-            this.$emit('ChangePage')
-            this.$emit('AddtoList', this.Card)
+            if(this.Card.Cardnumber.length < 19){
+                alert("error")
+            }else {
+                this.$emit('ChangePage')
+                this.$emit('AddtoList', this.Card)
+            }
             // this.$emit('AddtoList', {...this.Card})
         },
         RenderCard(){
@@ -96,6 +101,11 @@ input, select {
     font-size: 18px;
     margin: 5px 0px 15px 0px;
 }
+
+select {
+//   -webkit-appearance: none; <------- tar bort pilen
+}
+
 aside {
     display: flex;
     flex-direction: column;
