@@ -30,7 +30,7 @@
         <CardList
         :Card="Card"
         />
-    <h1 class="test" v-if="Card == ''">THERE IS NO CARDS. <br> TO DO IT PRESS BUTTON BELOW</h1>
+    <h1 class="test" v-if="Card == ''">THERE IS NO CARDS.<br>PRESS BUTTON BELOW TO ADD CARD.</h1>
     <div>
     <img v-if="Card == ''" src="../assets/home-bitcoin.svg" alt="">
     <img v-if="Card == ''" src="../assets/home-ninja.svg" alt="">

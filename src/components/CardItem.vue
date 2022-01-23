@@ -30,12 +30,23 @@ export default {
     props: ['Card'],
     data (){return{
         currentUrl: "",
+        CardColor: "",
+        wifi: require("../assets/wifi.svg"),
     }},
-    // methods:{
-    //     displaylogo (){
-    //         if(Card.Vendor == ""){this.currentUrl = ""}else {this.currentUrl = require("../assets/"+ Card.Vendor +".svg")}
-    //     }
-    // }
+    beforeMount: function (){
+    this.displaylogo()
+    },
+    methods:{
+        displaylogo (){
+            this.CardColor = this.Card.Vendor
+            if(this.Card.Vendor == ""){this.currentUrl = ""}else {this.currentUrl = require("../assets/"+ this.Card.Vendor +".svg")}
+            if(this.Card.Vendor == "Evil" || this.Card.Vendor == "Ninja"|| this.Card.Vendor =="Blockchain"){
+            this.wifi = require("../assets/wifi_white.svg")
+            }else {
+            this.wifi = require("../assets/wifi.svg")
+            }
+        }
+    }
 }
 </script>
 
