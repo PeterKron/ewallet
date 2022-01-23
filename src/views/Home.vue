@@ -12,16 +12,16 @@
         <img class="vendor-img" :src="currentUrl" alt="">
         </div>
 
-        <p class="number">{{Card.Cardnumber}}</p>
+        <p class="number">{{Kort.Cardnumber}}</p>
 
         <div class="holderbox">
             <p class="smallerp">CARDHOLDER NAME</p>
-            <p>{{Card.Cardholder}}</p>
+            <p>{{Kort.Cardholder}}</p>
         </div>
 
         <div class="validbox">
             <p class="smallerp">VALID THRU</p>
-            <p>{{Card.Month}}/{{Card.Year}}</p>
+            <p>{{Kort.Month}}/{{Kort.Year}}</p>
         </div>
         
       </section>
@@ -29,6 +29,7 @@
         <!-- <p>HERE STARTS CARDLIST</p> -->
         <CardList
         :Card="Card"
+        @ActiveCard="RenderCard"
         />
     <h1 class="test" v-if="Card == ''">THERE IS NO CARDS.<br>PRESS BUTTON BELOW TO ADD CARD.</h1>
     <div>
@@ -45,10 +46,26 @@ import CardList from '../components/CardList.vue'
 export default {
   components: {CardList},
   props: ['Card'],
+  data(){return{
+    Kort: {},
+    currentUrl: "",
+    CardColor: "",
+    wifi: require("../assets/wifi.svg"),
+  }},
   methods: {
     flipcard(){
       alert('notabletoflipcardjustyet')
     },
+    RenderCard(Card){
+        this.Kort = Card
+        this.CardColor = Card.Vendor
+        if(Card.Vendor == ""){this.currentUrl = ""}else {this.currentUrl = require("../assets/"+ Card.Vendor +".svg")}
+        if(Card.Vendor == "Evil" || Card.Vendor == "Ninja"|| Card.Vendor =="Blockchain"){
+        this.wifi = require("../assets/wifi_white.svg")
+        }else {
+        this.wifi = require("../assets/wifi.svg")
+        }
+    }
   },
 }
 </script>

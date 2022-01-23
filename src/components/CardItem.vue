@@ -1,6 +1,7 @@
 <template>
   <main>
-      <section :class="CardColor">
+      <!-- @click="$emit('ActiveCard', )" -->
+      <section :class="CardColor" @click="$emit('ActiveCard')">
           <div class="chipbox">
             <img :src="wifi" alt="">
             <img src="../assets/chip.svg" alt="">
