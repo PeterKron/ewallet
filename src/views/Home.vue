@@ -2,7 +2,7 @@
   <main class="Home">
     <h1>WELCOME TO E-WALLET</h1>
     <div v-if="!(Card == '')">
-      <p>HERE IS MY ACTIVE CARD btw in home</p>
+      <!-- <p>HERE IS MY ACTIVE CARD btw in home</p> -->
       <section :class="CardColor" @click="flipcard">
           <div class="chipbox">
             <img :src="wifi" alt="">

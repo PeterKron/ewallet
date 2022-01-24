@@ -62,7 +62,6 @@ export default {
     methods: {
         // add ifs and donts
         Submit(){
-            
             // if(this.Card.Cardnumber.length < 19 ){
             //     alert("error")
             // }
@@ -76,6 +75,7 @@ export default {
             }
         },
         RenderCard(){
+            // this.Cardholder.toUpperCase(this.Cardholder)
             this.$emit('RenderCard', this.Card)        
         },
         AddSpace (){
