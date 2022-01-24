@@ -1,13 +1,12 @@
 <template>
   <main>
-      <!-- @click="$emit('ActiveCard', )" -->
-      <section :class="CardColor" @click="$emit('ActiveCard')">
+      <section :class="Card.Vendor" @click="$emit('ActiveCard')">
           <div class="chipbox">
             <img :src="wifi" alt="">
             <img src="../assets/chip.svg" alt="">
           </div>
         <div class="logo">
-        <img class="vendor-img" :src="currentUrl" alt="">
+        <img class="vendor-img" :src="logoPath" alt="">
         </div>
 
         <p class="number">{{Card.Cardnumber}}</p>
@@ -31,15 +30,21 @@ export default {
     props: ['Card'],
     data (){return{
         currentUrl: "",
-        CardColor: "",
+        // CardColor: "",
         wifi: require("../assets/wifi.svg"),
     }},
+    computed: { 
+        logoPath(){
+            if(this.Card.Vendor == ""){return ""}
+            return require("../assets/"+ this.Card.Vendor +".svg")
+        }
+    },
     beforeMount: function (){
     this.displaylogo()
     },
     methods:{
         displaylogo (){
-            this.CardColor = this.Card.Vendor
+            // this.CardColor = this.Card.Vendor
             if(this.Card.Vendor == ""){this.currentUrl = ""}else {this.currentUrl = require("../assets/"+ this.Card.Vendor +".svg")}
             if(this.Card.Vendor == "Evil" || this.Card.Vendor == "Ninja"|| this.Card.Vendor =="Blockchain"){
             this.wifi = require("../assets/wifi_white.svg")

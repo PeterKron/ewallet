@@ -36,7 +36,7 @@
 
             <label for="">VENDOR</label>
             <select v-model="Card.Vendor" @change="RenderCard">
-                <option v-for="vendor in Vendors" :key="vendor.text">
+                <option v-for="vendor in Vendors" :key="vendor.text" :value="vendor.value">
                     {{vendor.text}}
                 </option>
             </select>
@@ -57,7 +57,7 @@ export default {
             CVC: "",
             Vendor: "",
         },
-        Vendors: [{text: "Bitcoin",},{text: "Ninja", },{text: "Blockchain",},{text: "Evil", },],
+        Vendors: [{text: "Bitcoin Inc", value: "Bitcoin"},{text: "Ninja inv", value: "Ninja"},{text: "Blockchain", value: "Blockchain"},{text: "Evil", value: "Evil" },],
     }},
     methods: {
         // add ifs and donts

@@ -55,6 +55,9 @@ main {
     justify-content: center;
     align-items: center;
 }
+nav {
+  padding-top: 5rem;
+}
 .test {
   width: 400px;
   text-align: center;

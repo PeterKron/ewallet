@@ -3,28 +3,10 @@
     <h1>WELCOME TO E-WALLET</h1>
     <div v-if="!(Card == '')">
       <!-- <p>HERE IS MY ACTIVE CARD btw in home</p> -->
-      <section :class="CardColor" @click="flipcard">
-          <div class="chipbox">
-            <img :src="wifi" alt="">
-            <img src="../assets/chip.svg" alt="">
-          </div>
-        <div class="logo">
-        <img class="vendor-img" :src="currentUrl" alt="">
-        </div>
-
-        <p class="number">{{Kort.Cardnumber}}</p>
-
-        <div class="holderbox">
-            <p class="smallerp">CARDHOLDER NAME</p>
-            <p>{{Kort.Cardholder}}</p>
-        </div>
-
-        <div class="validbox">
-            <p class="smallerp">VALID THRU</p>
-            <p>{{Kort.Month}}/{{Kort.Year}}</p>
-        </div>
-        
-      </section>
+      <CardItem :Card="Kort" 
+      @click="flipcard"
+      />
+      <!-- @ActiveCard="flipcard" -->
     </div>
         <!-- <p>HERE STARTS CARDLIST</p> -->
         <CardList
@@ -43,8 +25,9 @@
 
 <script>
 import CardList from '../components/CardList.vue'
+import CardItem from '../components/CardItem.vue'
 export default {
-  components: {CardList},
+  components: {CardList, CardItem},
   props: ['Card'],
   data(){return{
     Kort: {},

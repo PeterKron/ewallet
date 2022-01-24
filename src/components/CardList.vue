@@ -18,10 +18,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 ul {
-    padding: 0;
-    /* margin: 0; */
+  display: grid;
+  grid-auto-rows: 20px;
+  padding: 8rem;
+  /* margin: 0; */
+
 }
 </style>
 
