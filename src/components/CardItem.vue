@@ -28,16 +28,16 @@
 <script>
 export default {
     props: ['Card'],
-    computed: { 
+    computed: {
         logoPath(){
-            if(this.Card.Vendor == ""){return ""}
-            return require("../assets/"+ this.Card.Vendor +".svg")
+            if(this.Card.Vendor == "") {return "original"}
+            else {return require("../assets/"+ this.Card.Vendor +".svg")}
         },
         wifiPath () {
             if(this.Card.Vendor == "Evil" || this.Card.Vendor == "Ninja"|| this.Card.Vendor =="Blockchain")
             {return require("../assets/wifi_white.svg")}
             return require("../assets/wifi.svg")
-        }
+        },
     },    
 }
 
@@ -90,6 +90,7 @@ section {
     }
     .holderbox {
         grid-area: cardh;
+        p:last-of-type { text-transform: uppercase;}
     }
     .validbox {
         grid-area: valid;
@@ -103,11 +104,11 @@ section {
         margin-bottom: 5px;
     }
 }
-// .original {
-//     background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
-//     #D0D0D0;
-//     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08); 
-// }
+.original {
+    background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
+    #D0D0D0;
+    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08); 
+}
 .Evil{
     background: linear-gradient(248.3deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 100%),
     #F33355;
