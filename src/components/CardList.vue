@@ -5,7 +5,6 @@
         :Card="Card"
         @ActiveCard="$emit('ActiveCard', Card)"
         />
-        <!-- <h1 v-if="Card == Array">you need to add cards, to do it press button below</h1> -->
       </ul>
 </template>
 
@@ -21,9 +20,9 @@ export default {
 <style lang="scss" scoped>
 ul {
   display: grid;
-  grid-auto-rows: 20px;
-  padding: 8rem;
-  /* margin: 0; */
+  grid-auto-rows: 50px;
+  padding: 0;
+  margin: 8rem 0 6rem 0; 
 
 }
 </style>

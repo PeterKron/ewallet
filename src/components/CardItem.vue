@@ -2,7 +2,7 @@
   <main>
       <section :class="Card.Vendor" @click="$emit('ActiveCard')">
           <div class="chipbox">
-            <img :src="wifi" alt="">
+            <img :src="wifiPath" alt="">
             <img src="../assets/chip.svg" alt="">
           </div>
         <div class="logo">
@@ -28,32 +28,19 @@
 <script>
 export default {
     props: ['Card'],
-    data (){return{
-        currentUrl: "",
-        // CardColor: "",
-        wifi: require("../assets/wifi.svg"),
-    }},
     computed: { 
         logoPath(){
             if(this.Card.Vendor == ""){return ""}
             return require("../assets/"+ this.Card.Vendor +".svg")
+        },
+        wifiPath () {
+            if(this.Card.Vendor == "Evil" || this.Card.Vendor == "Ninja"|| this.Card.Vendor =="Blockchain")
+            {return require("../assets/wifi_white.svg")}
+            return require("../assets/wifi.svg")
         }
-    },
-    beforeMount: function (){
-    this.displaylogo()
-    },
-    methods:{
-        displaylogo (){
-            // this.CardColor = this.Card.Vendor
-            if(this.Card.Vendor == ""){this.currentUrl = ""}else {this.currentUrl = require("../assets/"+ this.Card.Vendor +".svg")}
-            if(this.Card.Vendor == "Evil" || this.Card.Vendor == "Ninja"|| this.Card.Vendor =="Blockchain"){
-            this.wifi = require("../assets/wifi_white.svg")
-            }else {
-            this.wifi = require("../assets/wifi.svg")
-            }
-        }
-    }
+    },    
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -116,6 +103,11 @@ section {
         margin-bottom: 5px;
     }
 }
+// .original {
+//     background: linear-gradient(248.3deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 100%),
+//     #D0D0D0;
+//     box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.08); 
+// }
 .Evil{
     background: linear-gradient(248.3deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0) 100%),
     #F33355;

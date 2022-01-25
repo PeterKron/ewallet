@@ -5,7 +5,6 @@
       @AddtoList="(payload) => $emit('AddtoList', payload)"
       :CardListData="CardListData"
       />
-      <!-- @submitted="this.$emit('fesds')" -->
   </main>
 </template>
 
@@ -19,7 +18,4 @@ export default {
 </script>
 
 <style scoped>
-label {
-    font-size: 1rem;
-}
 </style>

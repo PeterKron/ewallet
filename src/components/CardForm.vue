@@ -1,8 +1,6 @@
 <template>
-<!-- form @submit.prevent="() => $emit('ChangePage'), (Card) => $emit('AddtoList', Card)" -->
  <main> 
-        <form @submit.prevent="Submit">
-            
+        <form @submit.prevent="Submit">    
             <label for="">CARD NUMBER</label>
             <input type="text" maxlength="19" v-model="Card.Cardnumber"
             onkeypress="return /[1-9]/i.test(event.key)" @keyup="RenderCard" @keypress="AddSpace">
@@ -57,7 +55,7 @@ export default {
             CVC: "",
             Vendor: "",
         },
-        Vendors: [{text: "Bitcoin Inc", value: "Bitcoin"},{text: "Ninja inv", value: "Ninja"},{text: "Blockchain", value: "Blockchain"},{text: "Evil", value: "Evil" },],
+        Vendors: [{text: "Bitcoin Inc", value: "Bitcoin"},{text: "Ninja Bank", value: "Ninja"},{text: "Blockchain Inc", value: "Blockchain"},{text: "Evil Corp", value: "Evil" },],
     }},
     methods: {
         // add ifs and donts
