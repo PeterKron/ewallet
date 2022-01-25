@@ -3,14 +3,18 @@
     <h1>WELCOME TO E-WALLET</h1>
     <div v-if="!(Card == '')">
       <CardItem :Card="kort" 
-      @click="flipcard"
+      @ActiveCard="flipcard"
       />
     </div>
 
-    <CardList
+    <ul>
+    <CardItem 
+    v-for="Card in Card" :key="Card.Cardnumber"
     :Card="Card"
-    @ActiveCard="RenderCard"
+    @ActiveCard="renderCard"
     />
+    </ul>
+
     <h1 class="test" v-if="Card == ''">THERE IS NO CARDS.<br>PRESS BUTTON BELOW TO ADD CARD.</h1>
     <div>
     <img v-if="Card == ''" src="../assets/home-bitcoin.svg" alt="">
@@ -22,19 +26,18 @@
 </template>
 
 <script>
-import CardList from '../components/CardList.vue'
 import CardItem from '../components/CardItem.vue'
 export default {
-  components: {CardList, CardItem},
+  components: {CardItem},
   props: ['Card'],
   data(){return{
     kort: {},
   }},
   methods: {
     flipcard(){
-      alert('notabletoflipcardjustyet')
+      console.log('notabletoflipcardjustyet')
     },
-    RenderCard(Card){
+    renderCard(Card){
         this.kort = Card
     }
   },
@@ -42,5 +45,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+ul {
+  display: grid;
+  grid-auto-rows: 50px;
+  padding: 0;
+  margin: 8rem 0 6rem 0; 
 
+}
 </style>

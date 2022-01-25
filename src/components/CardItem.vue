@@ -1,6 +1,6 @@
 <template>
   <main>
-      <section :class="Card.Vendor" @click="$emit('ActiveCard')">
+      <section :class="Card.Vendor" @click="$emit('ActiveCard', Card)">
           <div class="chipbox">
             <img :src="wifiPath" alt="">
             <img src="../assets/chip.svg" alt="">
