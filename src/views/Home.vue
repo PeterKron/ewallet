@@ -1,26 +1,27 @@
 <template>
   <main class="Home">
     <h1>WELCOME TO E-WALLET</h1>
-    <div v-if="!(Card == '')">
+    <div v-if="renderactive == true">
       <CardItem :Card="kort" 
       @ActiveCard="flipcard"
       />
+      <p>remove me</p>
     </div>
 
     <ul>
-    <CardItem 
-    v-for="Card in Card" :key="Card.Cardnumber"
-    :Card="Card"
-    @ActiveCard="renderCard"
-    />
+        <CardItem 
+        v-for="Card in Card" :key="Card.Cardnumber"
+        :Card="Card"
+        @ActiveCard="renderCard"
+        />
     </ul>
 
     <h1 class="test" v-if="Card == ''">THERE IS NO CARDS.<br>PRESS BUTTON BELOW TO ADD CARD.</h1>
     <div>
-    <img v-if="Card == ''" src="../assets/home-bitcoin.svg" alt="">
-    <img v-if="Card == ''" src="../assets/home-ninja.svg" alt="">
-    <img v-if="Card == ''" src="../assets/home-evil.svg" alt="">
-    <img v-if="Card == ''" src="../assets/home-blockchain.svg" alt="">
+        <img v-if="Card == ''" src="../assets/home-bitcoin.svg" alt="">
+        <img v-if="Card == ''" src="../assets/home-ninja.svg" alt="">
+        <img v-if="Card == ''" src="../assets/home-evil.svg" alt="">
+        <img v-if="Card == ''" src="../assets/home-blockchain.svg" alt="">
     </div>
   </main>
 </template>
@@ -32,6 +33,7 @@ export default {
   props: ['Card'],
   data(){return{
     kort: {},
+    renderactive: false
   }},
   methods: {
     flipcard(){
@@ -39,6 +41,7 @@ export default {
     },
     renderCard(Card){
         this.kort = Card
+        this.renderactive = true
     }
   },
 }
@@ -50,6 +53,5 @@ ul {
   grid-auto-rows: 50px;
   padding: 0;
   margin: 8rem 0 6rem 0; 
-
 }
 </style>

@@ -10,7 +10,7 @@
         </div>
 
         <p class="number">{{Card.Cardnumber}}</p>
-
+        
         <div class="holderbox">
             <p class="smallerp">CARDHOLDER NAME</p>
             <p>{{Card.Cardholder}}</p>
@@ -19,8 +19,7 @@
         <div class="validbox">
             <p class="smallerp">VALID THRU</p>
             <p>{{Card.Month}}/{{Card.Year}}</p>
-        </div>
-        
+        </div> 
       </section>
   </main>
 </template>

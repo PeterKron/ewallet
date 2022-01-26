@@ -21,7 +21,9 @@ export default {
     props: ['CardListData'],
     components: {CardForm, CardItem},
     data(){return{
-        Card: {},
+        Card: {
+            Vendor: "original"
+        },
     }},
     methods: {
         RenderCard(Card){

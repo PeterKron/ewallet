@@ -55,7 +55,8 @@ export default {
             CVC: "",
             Vendor: "",
         },
-        Vendors: [{text: "Bitcoin Inc", value: "Bitcoin"},{text: "Ninja Bank", value: "Ninja"},{text: "Blockchain Inc", value: "Blockchain"},{text: "Evil Corp", value: "Evil" },],
+        Vendors: [{text: "Bitcoin Inc", value: "Bitcoin"},{text: "Ninja Bank", value: "Ninja"},
+        {text: "Blockchain Inc", value: "Blockchain"},{text: "Evil Corp", value: "Evil" },],
     }},
     methods: {
         // add ifs and donts
@@ -73,8 +74,7 @@ export default {
             }
         },
         RenderCard(){
-            // this.Cardholder.toUpperCase(this.Cardholder)
-            this.$emit('RenderCard', this.Card)        
+            this.$emit('RenderCard', {...this.Card})        
         },
         AddSpace (){
             if(this.Card.Cardnumber.length === 4 || this.Card.Cardnumber.length === 9 || this.Card.Cardnumber.length === 14){
@@ -83,7 +83,6 @@ export default {
         }
     }
 }
-/* this.$emit('send', {...this.user}) */
 </script>
 <style lang="scss">
 form{
