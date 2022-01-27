@@ -47,7 +47,6 @@ export default {
   methods: {
     renderCard(Card){
       this.kort = Card
-
     },
     removeCard(){
       this.remove = false
