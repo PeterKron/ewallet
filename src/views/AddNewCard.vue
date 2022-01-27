@@ -2,7 +2,7 @@
   <main>
       <h1>ADD A NEW BANK CARD</h1>
       <CardItem 
-      :Card="Card"
+      :Card="Card" 
       />
       <CardForm
       @RenderCard="RenderCard"

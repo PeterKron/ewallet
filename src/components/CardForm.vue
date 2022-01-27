@@ -45,7 +45,7 @@
 
 <script>
 export default {
-    props: ['CardListData'],
+    props: {CardListData:Array},
     data(){return{
         Card: {
             Cardnumber: "",
@@ -61,16 +61,15 @@ export default {
     methods: {
         // add ifs and donts
         Submit(){
-            // if(this.Card.Cardnumber.length < 19 ){
-            //     alert("error")
-            // }
-            if(!this.Card.Cardholder.includes(" ")){
+            if(this.Card.Cardnumber.length < 19 ){
                 alert("error")
+            }
+            else if (this.CardListData.find((cardnum) => cardnum.Cardnumber == this.Card.Cardnumber)){
+                alert("kortnummere")
             }
             else {
                 this.$emit('ChangePage')
                 this.$emit('AddtoList', this.Card)
-                // this.$emit('AddtoList', {...this.Card})
             }
         },
         RenderCard(){
@@ -99,8 +98,9 @@ input, select {
     margin: 5px 0px 15px 0px;
 }
 select {
-//   -webkit-appearance: none; <------- tar bort pilen
+//   -webkit-appearance: none; 
 }
+//   <------- tar bort pilen
 aside {
     display: flex;
     flex-direction: column;

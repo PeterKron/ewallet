@@ -3,6 +3,8 @@
     <Home 
     v-if="currentView == 'home'"
     :Card="cardlistdata"
+    @ChangePage="ChangePage"
+    @removeCard="removeCard"
     />
 
     <AddNewCard 
@@ -11,13 +13,6 @@
     @AddtoList="AddtoList"
     :CardListData="cardlistdata"
     />
-    <nav>
-      <!-- <a v-if="currentView == 'addnewcard'" @click="currentView = 'home'">ADD CARD</a> -->
-      <button v-if="currentView == 'home'"
-      @click="currentView = 'addnewcard'">
-      ADD A NEW CARD
-      </button>
-    </nav>
   </main>
 </template>
 
@@ -27,12 +22,23 @@
 
 export default {
   components: {Home, AddNewCard,},
+  beforeMount: function () {
+    if(localStorage.cardlist){
+      this.cardlistdata = JSON.parse(localStorage.getItem("cardlist"))
+    }
+  },
   methods: {
     ChangePage(Page){
       this.currentView = Page
     },
     AddtoList(Card){
       this.cardlistdata.push(Card)
+      localStorage.setItem('cardlist', JSON.stringify(this.cardlistdata))
+
+    },
+    removeCard(card){
+      this.cardlistdata.splice(this.cardlistdata.indexOf(card), 1)
+      localStorage.setItem('cardlist', JSON.stringify(this.cardlistdata))
     }
   },
   data(){return{
