@@ -3,8 +3,7 @@
   <main class="Home" >
     <h1 :class="{remove}">WELCOME TO E-WALLET</h1>
     <section v-if="Card.length > 0">
-      <CardItem :Card="kort" :class="{remove}"
-      />
+      <CardItem :Card="kort" :class="{remove}"/>
       <!-- @ActiveCard="flipcard" -->
       <button @click="remove = true" :class="{remove}">REMOVE CARD</button>
       <div class="remove-box" v-if="remove == true">
