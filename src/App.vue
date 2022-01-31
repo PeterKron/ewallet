@@ -64,7 +64,7 @@ main {
 // nav {
 //   padding-top: 5rem;
 // }
-.test {
+.nocards {
   width: 400px;
   text-align: center;
   color:rgb(245, 13, 13);
